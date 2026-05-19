@@ -14,6 +14,10 @@ def login():
         if user:
             session['user_id'] = user.id
             session['role'] = role
+            
+            if role == 'user':
+                session['user_name'] = user.name
+
             if role == 'admin':
                 return redirect(url_for('admin.admin_panel'))
             else:

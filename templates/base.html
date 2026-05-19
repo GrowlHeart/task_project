@@ -20,7 +20,13 @@
                     <a href="{{ url_for('user.view') }}" class="nav-link">Задачи</a>
                     <a href="{{ url_for('tasks.my_task') }}" class="nav-link">Моя задача</a>
                 {% endif %}
-                <span class="user-name">{{ session.role }}</span>
+                <span class="user-name">
+                    {% if session.role == 'admin' %}
+                        Админ
+                    {% else %}
+                        {{ session.user_name }}
+                    {% endif %}
+                </span>
                 <a href="{{ url_for('auth.logout') }}" class="nav-link logout">Выйти</a>
             {% else %}
                 <a href="{{ url_for('auth.login') }}" class="nav-link">Вход</a>
